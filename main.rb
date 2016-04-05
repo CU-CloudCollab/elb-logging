@@ -57,4 +57,6 @@ resp = elb_client.modify_load_balancer_attributes({
   },
 })
 
-puts "Number of objects "+s3.list_objects(bucket: bucket_name).contents.length.to_s
+objects_created = s3.list_objects(bucket: bucket_name).contents.length
+
+exit objects_created==1 ? 0 : 1
