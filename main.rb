@@ -2,11 +2,7 @@ require 'aws-sdk'
 require 'json'
 require 'optparse'
 
-
-# -r = region, -t name:value, -op operation (start/stop)
 OPTIONS = {}
-
-#Default Values
 
 OptionParser.new do |opt|
   opt.on('--elb_name elb name') { |o| OPTIONS[:elb_name] = o }
