@@ -1,10 +1,8 @@
 require 'aws-sdk'
-#require 'pp'
 require 'json'
 
 s3 = Aws::S3::Client.new(region: 'us-east-1')
 new_bucket = s3.create_bucket(bucket: 'team1-elb-logging-s3')
-s3.put_object(bucket: 'team1-elb-logging-s3', key: "my-app/AWSLogs/101334791012/")
 
 policy_json = {
   "Id" => "Policy1459871218139",
@@ -12,11 +10,9 @@ policy_json = {
   "Statement" => [
     {
       "Sid" => "Stmt1459871212751",
-      "Action" => [
-        "s3:PutObject"
-      ],
+      "Action" => ["s3:PutObject"],
       "Effect" => "Allow",
-      "Resource" => "arn:aws:s3:::team1-elb-logging-s3/my-app/AWSLogs/101334791012",
+      "Resource" => "arn:aws:s3:::team1-elb-logging-s3/my-app/*",
       "Principal" => {
         "AWS" => [
           "127311923021"
@@ -45,3 +41,5 @@ resp = elb_client.modify_load_balancer_attributes({
     }
   },
 })
+
+puts "Number of objects "+s3.list_objects(bucket:"team1-elb-logging-s3").contents.length.to_s
