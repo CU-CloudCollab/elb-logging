@@ -10,7 +10,9 @@ S3 bucket will be created with this syntax-
 bucket_name = :elb_name + "-logging"
 
 The emit_interval: 5 minutes 
-Need to change the principal aws id; refer to http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-bucket-user-policy-specifying-principal-intro.html
+
+Need to change the principal aws id; refer to
+http://docs.aws.amazon.com/AmazonS3/latest/dev/s3-bucket-user-policy-specifying-principal-intro.html
 
 Default policy in use in this script:
 
